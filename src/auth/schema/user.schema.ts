@@ -13,7 +13,7 @@ export class User {
 
   @Prop({
     type: [{type: String, enum: Role}],
-    default: [Role.USER]
+    default: [Role.CUSTOMER]
   })
   role: Role[]
 

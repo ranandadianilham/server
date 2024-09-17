@@ -14,6 +14,9 @@ import { JwtStrategy } from './auth/jwt.strategy';
 import { WarrantyService } from './warranty/warranty.service';
 import { AuthService } from './auth/auth.service';
 import { ProductModule } from './product/product.module';
+import { ProfileController } from './profile/profile.controller';
+import { ProfileService } from './profile/profile.service';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
@@ -35,9 +38,10 @@ import { ProductModule } from './product/product.module';
     }),
     ProductModule,
     AuthModule,
+    ProfileModule,
   ],
-  controllers: [AppController, AuthController, WarrantyController],
-  providers: [AppService, AuthService, WarrantyService, JwtStrategy],
+  controllers: [AppController, AuthController, WarrantyController, ProfileController],
+  providers: [AppService, AuthService, WarrantyService, JwtStrategy, ProfileService],
   exports: [JwtStrategy, PassportModule]
 })
 export class AppModule {}

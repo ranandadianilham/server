@@ -17,6 +17,7 @@ import { ProductModule } from './product/product.module';
 import { ProfileController } from './profile/profile.controller';
 import { ProfileService } from './profile/profile.service';
 import { ProfileModule } from './profile/profile.module';
+import { WarrantyModule } from './warranty/warranty.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { ProfileModule } from './profile/profile.module';
     ProductModule,
     AuthModule,
     ProfileModule,
+    WarrantyModule,
   ],
   controllers: [AppController, AuthController, WarrantyController, ProfileController],
   providers: [AppService, AuthService, WarrantyService, JwtStrategy, ProfileService],

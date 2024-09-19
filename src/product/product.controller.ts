@@ -14,13 +14,14 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Get()
-  @Roles(Role.CUSTOMER) // custom decorator
+  @Roles(Role.CUSTOMER, Role.STAFF)
   @UseGuards(RolesGuard) // roles guard
   async getAllProduct(): Promise<Product[]> {
     return this.productService.findAll();
   }
 
   @Post()
+  @Roles(Role.STAFF)
   async createProduct(@Body() product: CreateProductDto): Promise<Product> {
     return this.productService.create(product);
   }
@@ -31,6 +32,7 @@ export class ProductController {
   }
 
   @Put(':id')
+  @Roles(Role.STAFF)
   async updateProduct(
     @Param('id') id: string,
     @Body() product: UpdateProductDto,
@@ -39,6 +41,7 @@ export class ProductController {
   }
 
   @Delete(':id')
+  @Roles(Role.STAFF) 
   async deleteProduct(@Param('id') id: string): Promise<Product> {
     return this.productService.deleteById(id);
   }
